@@ -1,0 +1,134 @@
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    25% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    75% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(100vh) scale(0);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100px) scale(1);
+        opacity: 0;
+    }
+}
+
+@keyframes pop {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+.fade-in {
+    animation: fadeIn 1.5s ease-in;
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+.bounce {
+    animation: bounce 1s infinite;
+}
+
+.float-animation {
+    animation: floating 3s ease-in-out infinite;
+}
+
+.heart-beat {
+    animation: heartbeat 1.5s ease-in-out infinite;
+}
+
+.floating-heart {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: floatUp 4s ease-in forwards;
+}
+
+.heart-particle {
+    position: fixed;
+    font-size: 1.5rem;
+    pointer-events: none;
+    animation: floatUp 3s ease-in forwards;
+    z-index: 1000;
+}
+
+.love-message-box {
+    animation: fadeIn 0.5s ease-out;
+    padding: 20px;
+    margin-top: 20px;
+    background: linear-gradient(to right, #ffe6e6, #ffcccc);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.2);
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* New styles for flying hearts */
+.flying-heart {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    animation: fly 5s linear infinite;
+    z-index: 1000;
+}
+
+@keyframes fly {
+    0% {
+        transform: translateY(100vh) translateX(0) scale(0.5);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100vw) scale(1);
+        opacity: 0;
+    }
+}

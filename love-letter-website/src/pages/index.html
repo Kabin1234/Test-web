@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter to My Crush</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="loading-screen" class="loading-screen">
+        <div class="loading-content">
+            <i class="fas fa-heart fa-spin"></i>
+            <p>Wait kariye mere kuchupuchu ji aapke liye website load kiya jaa raha hai 🤭</p>
+        </div>
+    </div>
+    <div class="container" style="display: none;">
+        <h1 class="float-animation">Express Your Heart ❤️</h1>
+        <div class="letter-section">
+            <textarea id="love-message" placeholder="Pour your heart out... Format [Name] {Your message 🤭}" class="fade-in"></textarea>
+            <button class="button heart-beat" id="send-button">
+                <i class="fas fa-heart"></i> Send Love
+            </button>
+            <div id="messages-container"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <p>© 2024 Love Letter Website</p>
+    </footer>
+    <audio id="background-music" src="../../assets/audio/background-music.mp3" loop></audio>
+    <script src="../js/main.js"></script>
+    <script src="../js/effects.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const loadingScreen = document.getElementById("loading-screen");
+            const container = document.querySelector(".container");
+            const backgroundMusic = document.getElementById("background-music");
+
+            // Create an audio context
+            const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            const track = audioContext.createMediaElementSource(backgroundMusic);
+            const gainNode = audioContext.createGain();
+            track.connect(gainNode).connect(audioContext.destination);
+
+            // Function to fade in the audio
+            function fadeInAudio(duration) {
+                gainNode.gain.setValueAtTime(0, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(1, audioContext.currentTime + duration);
+            }
+
+            // Function to fade out the audio
+            function fadeOutAudio(duration) {
+                gainNode.gain.setValueAtTime(1, audioContext.currentTime);
+                gainNode.gain.linearRampToValueAtTime(0, audioContext.currentTime + duration);
+            }
+
+            // Hide loading screen and play music after timeout
+            setTimeout(() => {
+                loadingScreen.style.display = "none";
+                container.style.display = "block";
+                backgroundMusic.play();
+                fadeInAudio(5); // Fade in over 5 seconds
+            }, 2000); // Adjust the timeout duration as needed
+
+            // Fade out the audio when the page is about to be unloaded
+            window.addEventListener("beforeunload", () => {
+                fadeOutAudio(5); // Fade out over 5 seconds
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,223 @@
+:root {
+  --primary-color: #ff6b6b;
+  --secondary-color: #ff8585;
+  --text-color: #2d3436;
+  --bg-color: #ffe6e6;
+  --card-bg-color: #ffcccc;
+  --button-hover-color: #ff4f4f;
+}
+
+body {
+    font-family: 'Dancing Script', cursive;
+    background: var(--bg-color);
+    min-height: 100vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(135deg, #ffcccc 0%, #ffe6e6 100%);
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 2.5em;
+    margin: 0;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: var(--primary-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    flex: 1;
+}
+
+.letter-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+textarea {
+    width: 100%;
+    max-width: 600px;
+    min-height: 200px;
+    padding: 1rem;
+    border: 2px solid var(--primary-color);
+    border-radius: 15px;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+textarea:focus {
+    outline: none;
+    box-shadow: 0 0 15px rgba(255, 107, 107, 0.3);
+    transform: scale(1.01);
+}
+
+.button {
+    background: var(--primary-color);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+    position: relative;
+    overflow: hidden;
+    margin: 1rem auto;
+    display: block;
+    width: fit-content;
+}
+
+.button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(255, 107, 107, 0.6);
+    background: var(--button-hover-color);
+}
+
+.button::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.button:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+.button:active {
+    transform: scale(0.95);
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(100, 100);
+        opacity: 0;
+    }
+}
+
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: var(--primary-color);
+    color: white;
+    position: static;
+    bottom: 0;
+    width: 100%;
+}
+
+.love-message-box {
+    background: var(--card-bg-color);
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(255, 107, 107, 0.2);
+    margin: 20px auto;
+    max-width: 600px;
+    transform-origin: center;
+    transition: transform 0.3s ease;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+.love-message-box:hover {
+    transform: scale(1.02);
+}
+
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.loading-content {
+    text-align: center;
+    color: var(--primary-color);
+}
+
+.loading-content i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.loading-content p {
+    font-size: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+
+    .button {
+        font-size: 1rem;
+        padding: 0.8rem 1.5rem;
+    }
+
+    textarea {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 0.6rem 1rem;
+    }
+
+    textarea {
+        font-size: 0.9rem;
+    }
+}
